@@ -7,7 +7,7 @@ import React, {
   useRef,
 } from "react";
 import { Team, Topic, Round, BuzzerEvent, AppUser } from "@/types";
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
 interface AppState {
   user: AppUser | null;
@@ -123,6 +123,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   // ── One-time admin setup ───────────────────────────────────────
   useEffect(() => {
+    if (!isSupabaseConfigured) return;
     // Ensure admin account exists on first load
     const initialized = sessionStorage.getItem("buzzr_admin_init");
     if (!initialized) {
