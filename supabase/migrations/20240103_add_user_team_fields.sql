@@ -1,0 +1,2 @@
+ALTER TABLE public.users ADD COLUMN IF NOT EXISTS team_name TEXT;
+ALTER TABLE public.users ADD COLUMN IF NOT EXISTS team_code TEXT;
